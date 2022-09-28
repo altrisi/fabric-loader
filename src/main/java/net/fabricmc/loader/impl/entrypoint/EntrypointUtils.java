@@ -55,7 +55,7 @@ public final class EntrypointUtils {
 								exc));
 			}
 
-			Log.info(LogCategory.ENTRYPOINT, "Took " + (System.nanoTime() - start) + "ns to start " + container.getProvider().getMetadata().getId());
+			Log.info(LogCategory.ENTRYPOINT, "Took " + (System.nanoTime() - start) + "ns to run " + name + " for " + container.getProvider().getMetadata().getId());
 		}
 
 		if (exception != null) {
