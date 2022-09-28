@@ -43,6 +43,7 @@ public final class EntrypointUtils {
 		Log.debug(LogCategory.ENTRYPOINT, "Iterating over entrypoint '%s'", name);
 
 		for (EntrypointContainer<T> container : entrypoints) {
+			long start = System.nanoTime();
 			try {
 				invoker.accept(container.getEntrypoint());
 			} catch (Throwable t) {
@@ -52,6 +53,7 @@ public final class EntrypointUtils {
 								name, container.getProvider().getMetadata().getId()),
 								exc));
 			}
+			Log.info(LogCategory.ENTRYPOINT, "Took " + (System.nanoTime() - start) + "ns to start " + container.getProvider().getMetadata().getId());
 		}
 
 		if (exception != null) {
